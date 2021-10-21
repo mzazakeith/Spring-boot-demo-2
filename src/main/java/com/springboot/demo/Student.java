@@ -1,5 +1,6 @@
 package com.springboot.demo;
 
+//this is a java bean class. java bean class has getters and setters
 public class Student {
     private String firstName;
     private String lastName;
