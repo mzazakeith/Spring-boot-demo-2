@@ -1,5 +1,6 @@
 package com.springboot.demo.controller;
 
+import com.springboot.demo.exception.ResourceNotFoundException;
 import com.springboot.demo.model.Employee;
 import com.springboot.demo.service.EmployeeService;
 import org.springframework.http.HttpStatus;
@@ -30,19 +31,19 @@ public class EmployeeController {
 
 //    build get employee by id restapi
     @GetMapping("{id}")
-    public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") long employeeId){
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") long employeeId) throws ResourceNotFoundException {
         return new ResponseEntity<Employee>(employeeService.getEmployeeById(employeeId), HttpStatus.OK);
     }
 
 //    build update employee REST API
     @PutMapping("{id}")
-    public ResponseEntity<Employee> updateEmployee(@PathVariable("id") long employeeId, @RequestBody Employee employee){
+    public ResponseEntity<Employee> updateEmployee(@PathVariable("id") long employeeId, @RequestBody Employee employee) throws ResourceNotFoundException {
         return new ResponseEntity<Employee>(employeeService.updateEmployee(employee,employeeId),HttpStatus.OK);
     }
 
 //    build delete employee REST API
     @DeleteMapping("{id}")
-    public ResponseEntity<String> deleteEmployee(@PathVariable("id") long employeeId){
+    public ResponseEntity<String> deleteEmployee(@PathVariable("id") long employeeId) throws ResourceNotFoundException {
         employeeService.deleteEmployee(employeeId);
         return new ResponseEntity<String>("Employee deleted successfully", HttpStatus.OK);
     }
