@@ -14,7 +14,6 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     public EmployeeController(EmployeeService employeeService) {
-        super();
         this.employeeService = employeeService;
     }
 //    build create employee restAPI
